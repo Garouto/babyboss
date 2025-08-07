@@ -22,6 +22,16 @@ export default function ClubLights() {
     let raf = 0
     const dpr = Math.max(1, Math.min(2, window.devicePixelRatio || 1))
 
+    const BPM = 124
+    const beat = 60 / BPM
+    let strobe = 0
+    let lastFlash = 0
+    let nextInterval = 0
+    function scheduleNext() {
+      nextInterval = beat * (0.65 + Math.random() * 0.9) // variação natural de tempo
+    }
+    scheduleNext()
+
     function resize() {
       const { innerWidth: w, innerHeight: h } = window
       canvas.width = Math.floor(w * dpr)
@@ -91,11 +101,16 @@ export default function ClubLights() {
       grad.addColorStop(0.9, `hsla(${b.hue} 100% 60% / 0.45)`)
       grad.addColorStop(1, `hsla(${b.hue} 100% 60% / 0.0)`)
 
+      // Flicker rápido nos feixes e reforço durante o strobe
+      const flicker = 0.9 + 0.1 * Math.sin(t * 12 + b.phase * 1.7)
+      const boost = 1 + strobe * 0.85
+
       ctx.save()
-      ctx.globalCompositeOperation = 'lighter' // additive glow
+      ctx.globalCompositeOperation = 'lighter'
       ctx.shadowColor = `hsla(${b.hue} 100% 60% / 0.9)`
-      ctx.shadowBlur = 22
-      ctx.lineWidth = b.width
+      ctx.shadowBlur = 22 * boost
+      ctx.lineWidth = b.width * flicker * boost
+      ctx.globalAlpha = 0.95 * flicker
       ctx.beginPath()
       ctx.moveTo(b.x, b.y)
       ctx.lineTo(x2, y2)
@@ -113,17 +128,16 @@ export default function ClubLights() {
         ctx.save()
         ctx.globalCompositeOperation = 'lighter'
         const g = ctx.createRadialGradient(px, py, 0, px, py, 18)
-        g.addColorStop(0, `hsla(${b.hue} 100% 65% / 0.9)`)
+        g.addColorStop(0, `hsla(${b.hue} 100% 65% / ${0.9 * (0.8 + 0.2 * strobe)})`)
         g.addColorStop(1, `hsla(${b.hue} 100% 65% / 0)`)
         ctx.fillStyle = g
         ctx.beginPath()
-        ctx.arc(px, py, r * 18, 0, Math.PI * 2)
+        ctx.arc(px, py, r * 18 * (1 + strobe * 0.4), 0, Math.PI * 2)
         ctx.fill()
         ctx.restore()
       }
     }
 
-    // Ambient sweeps
     function drawAmbient(t: number) {
       const { innerWidth: w, innerHeight: h } = window
       ctx.save()
@@ -152,6 +166,33 @@ export default function ClubLights() {
       ctx.restore()
     }
 
+    function drawStrobe(t: number) {
+      if (strobe <= 0.001) return
+      const { innerWidth: w, innerHeight: h } = window
+      ctx.save()
+      ctx.globalCompositeOperation = 'screen'
+
+      // Lavagem branca rápida
+      ctx.fillStyle = `rgba(255,255,255,${0.12 * strobe})`
+      ctx.fillRect(0, 0, w, h)
+
+      // Haze dourado
+      const g1 = ctx.createRadialGradient(w * 0.25, h * 0.3, 0, w * 0.25, h * 0.3, Math.max(w, h) * 0.9)
+      g1.addColorStop(0, `hsla(52 100% 60% / ${0.28 * strobe})`)
+      g1.addColorStop(1, 'hsla(52 100% 60% / 0)')
+      ctx.fillStyle = g1
+      ctx.fillRect(0, 0, w, h)
+
+      // Haze magenta
+      const g2 = ctx.createRadialGradient(w * 0.8, h * 0.7, 0, w * 0.8, h * 0.7, Math.max(w, h) * 0.9)
+      g2.addColorStop(0, `hsla(330 100% 60% / ${0.22 * strobe})`)
+      g2.addColorStop(1, 'hsla(330 100% 60% / 0)')
+      ctx.fillStyle = g2
+      ctx.fillRect(0, 0, w, h)
+
+      ctx.restore()
+    }
+
     let last = performance.now()
     function frame(now: number) {
       const dt = Math.min(0.06, (now - last) / 1000)
@@ -161,11 +202,21 @@ export default function ClubLights() {
       // fade previous frame for motion trails
       ctx.fillStyle = 'rgba(0, 0, 0, 0.1)'
       ctx.fillRect(0, 0, canvas.width, canvas.height)
-      ctx.setTransform(1, 0, 0, 1, 0, 0) // ensure no residual transforms
+      ctx.setTransform(1, 0, 0, 1, 0, 0)
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0)
+
+      // Agenda novo flash em tempo aleatório baseado no BPM
+      if (t - lastFlash >= nextInterval) {
+        strobe = 1
+        lastFlash = t
+        scheduleNext()
+      }
+      // Decaimento rápido do strobe (piscar)
+      strobe = Math.max(0, strobe - dt * 3.2)
 
       drawAmbient(t)
       for (const b of beams) drawBeam(b, t)
+      drawStrobe(t)
 
       raf = requestAnimationFrame(frame)
     }

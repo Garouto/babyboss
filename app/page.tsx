@@ -76,7 +76,7 @@ function TopNav() {
             </nav>
 
             <div className="flex items-center">
-              <Link href="#tokenomics">
+              <Link href="https://raydium.io/" target="_blank" rel="noopener noreferrer">
                 <Button className="h-10 rounded-full bg-[#ef4444] px-5 text-white shadow-[0_0_0_2px_#f5c542_inset] hover:bg-[#f05252]">
                   BUY NOW
                 </Button>
@@ -179,7 +179,9 @@ function MobileMenu({ onClose }: { onClose: () => void }) {
           ))}
           <li className="pt-2">
             <a
-              href="#tokenomics"
+              href="https://raydium.io/"
+              target="_blank"
+              rel="noopener noreferrer"
               onClick={onClose}
               className="inline-flex items-center justify-center rounded-full border-2 border-[#f5c542] px-7 py-2 text-lg font-extrabold text-white hover:bg-[#ef4444]"
             >
@@ -209,7 +211,9 @@ function Hero() {
           >
             {/* Desktop floating CTAs */}
             <a
-              href="#tokenomics"
+              href="https://raydium.io/"
+              target="_blank"
+              rel="noopener noreferrer"
               className="
                 group absolute left-[clamp(8px,2vw,32px)]
                 top-[clamp(60px,12vw,220px)]
@@ -235,7 +239,9 @@ function Hero() {
               "
             >
               <a
-                href="#"
+                href="https://t.me/"
+                target="_blank"
+                rel="noopener noreferrer"
                 aria-label="Telegram"
                 className="grid h-[clamp(40px,3.2vw,52px)] w-[clamp(40px,3.2vw,52px)] place-items-center rounded-full border-2 border-white/85 bg-black/30 text-white backdrop-blur transition hover:bg-white/10"
               >
@@ -245,8 +251,10 @@ function Hero() {
                 </svg>
               </a>
               <a
-                href="#"
-                aria-label="X"
+                href="https://twitter.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Twitter"
                 className="grid h-[clamp(40px,3.2vw,52px)] w-[clamp(40px,3.2vw,52px)] place-items-center rounded-full border-2 border-white/85 bg-black/30 text-white backdrop-blur transition hover:bg-white/10"
               >
                 <svg className="h-[55%] w-[55%]" viewBox="0 0 24 24" fill="currentColor">
@@ -280,7 +288,9 @@ function Hero() {
             {/* Mobile CTAs under title */}
             <div className="mt-[clamp(16px,3.5vw,28px)] flex w-full flex-col items-center gap-4 md:hidden">
               <a
-                href="#tokenomics"
+                href="https://raydium.io/"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 rounded-full border-2 border-[#f5c542] px-6 py-2 text-base font-extrabold leading-none text-white hover:bg-[#ef4444]"
               >
                 BUY NOW
@@ -292,7 +302,9 @@ function Hero() {
 
               <div className="flex items-center gap-3">
                 <a
-                  href="#"
+                  href="https://t.me/"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   aria-label="Telegram"
                   className="grid h-12 w-12 place-items-center rounded-full border-2 border-white/85 bg-black/30 text-white backdrop-blur transition hover:bg-white/10"
                 >
@@ -302,8 +314,10 @@ function Hero() {
                   </svg>
                 </a>
                 <a
-                  href="#"
-                  aria-label="X"
+                  href="https://twitter.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Twitter"
                   className="grid h-12 w-12 place-items-center rounded-full border-2 border-white/85 bg-black/30 text-white backdrop-blur transition hover:bg-white/10"
                 >
                   <svg className="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
@@ -376,7 +390,9 @@ function AboutSection() {
 
               <div className="mt-8">
                 <a
-                  href="#tokenomics"
+                  href="https://raydium.io/"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 rounded-full border-2 border-[#f5c542] bg-white/0 px-7 py-3 text-lg font-extrabold text-white shadow-[0_0_24px_rgba(245,197,66,0.18)] transition hover:bg-[#ef4444]"
                 >
                   BUY NOW
@@ -741,8 +757,8 @@ function FooterSection() {
   const socials = [
     { label: "CoinMarketCap", href: "#", icon: <LineChart className="h-5 w-5" /> },
     { label: "CoinGecko", href: "#", icon: <CircleDollarSign className="h-5 w-5" /> },
-    { label: "X", href: "#", icon: <X className="h-5 w-5" /> },
-    { label: "Telegram", href: "#", icon: <Send className="h-5 w-5" /> },
+    { label: "Twitter", href: "https://twitter.com/", icon: <X className="h-5 w-5" /> },
+    { label: "Telegram", href: "https://t.me/", icon: <Send className="h-5 w-5" /> },
     { label: "DexScreener", href: "#", icon: <CandlestickChart className="h-5 w-5" /> },
   ]
 
