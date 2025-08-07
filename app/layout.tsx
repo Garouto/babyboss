@@ -3,12 +3,12 @@ import "./globals.css"
 
 export const metadata: Metadata = {
   title: "Baby BOSS",
-  description: "Official Baby BOSS website.",
+  description: "Official Baby BOSS.",
   icons: {
     icon: "/favicon.png",
     shortcut: "/favicon.png",
   },
-    generator: 'v0.dev'
+    generator: 't.me/plebeu'
 }
 
 export default function RootLayout({
