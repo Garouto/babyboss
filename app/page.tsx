@@ -51,13 +51,13 @@ function TopNav() {
             <Link href="/" className="flex items-center gap-3 pl-1">
               <img
                 src="/images/logo.png"
-                alt="Baby BOSS logo"
+                alt="BOSS BABY logo"
                 width={36}
                 height={36}
                 className="h-9 w-9 rounded-full object-contain"
               />
               <span className="text-sm font-extrabold tracking-wide" style={{ color: "#f5c542" }}>
-                BABY BOSS
+                BOSS BABY
               </span>
             </Link>
 
@@ -107,13 +107,13 @@ function MobileTopBar({
           <Link href="/" className="flex items-center gap-2 pl-1">
             <img
               src="/images/logo.png"
-              alt="Baby BOSS logo"
+              alt="BOSS BABY logo"
               width={28}
               height={28}
               className="h-7 w-7 rounded-full object-contain"
             />
             <span className="text-xs font-extrabold tracking-wide" style={{ color: "#f5c542" }}>
-              BABY BOSS
+              BOSS BABY
             </span>
           </Link>
 
@@ -147,13 +147,13 @@ function MobileMenu({ onClose }: { onClose: () => void }) {
           <Link href="/" className="flex items-center gap-2" onClick={onClose}>
             <img
               src="/images/logo.png"
-              alt="Baby BOSS logo"
+              alt="BOSS BABY logo"
               width={28}
               height={28}
               className="h-7 w-7 rounded-full object-contain"
             />
             <span className="text-sm font-extrabold tracking-wide" style={{ color: "#f5c542" }}>
-              BABY BOSS
+              BOSS BABY
             </span>
           </Link>
           <button
@@ -256,7 +256,7 @@ function Hero() {
             <div className="flex flex-col items-center gap-4 md:gap-6">
               <img
                 src="/images/logo.png"
-                alt="Baby BOSS logo"
+                alt="BOSS BABY logo"
                 width={512}
                 height={512}
                 className="h-[clamp(100px,18vw,200px)] w-auto drop-shadow-[0_14px_40px_rgba(0,0,0,0.55)]"
@@ -271,7 +271,7 @@ function Hero() {
                   textShadow: "0 0 1.2em rgba(245,197,66,0.28), 0 0 2.6em rgba(239,68,68,0.22)",
                 }}
               >
-                BABY BOSS
+                BOSS BABY
               </h1>
             </div>
 
@@ -354,22 +354,22 @@ function AboutSection() {
                       textShadow: "0 0 24px rgba(245,197,66,0.25), 0 0 48px rgba(239,68,68,0.22)",
                     }}
                   >
-                    BABY BOSS
+                    BOSS BABY
                   </span>
                 </h2>
               </div>
 
               <div className="mt-6 space-y-4 text-[clamp(14px,1.6vw,18px)] leading-relaxed text-white/90">
                 <p>
-                  Baby BOSS is a bold, meme-ready superhero mascot forged for the internet.
+                  BOSS BABY is a bold, meme-ready superhero mascot forged for the internet.
                   Fueled by fun, style, and unstoppable vibes, the mission is simple:
                   bring entertainment and energy to every timeline.
                 </p>
                 <p>
-                  Built with community at the core, Baby BOSS celebrates creativity and culture.
+                  Built with community at the core, BOSS BABY celebrates creativity and culture.
                   No empty promises — just a movement that looks sharp and plays hard.
                 </p>
-                <p>Join the squad and help push Baby BOSS to the top.</p>
+                <p>Join the squad and help push BOSS BABY to the top.</p>
               </div>
 
               <div className="mt-8">
@@ -390,7 +390,7 @@ function AboutSection() {
               <div className="relative mx-auto max-w-[560px]">
                 <img
                   src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/img1-q8mpOfChNBD8OehowUGIzCtlnMqyaz.png"
-                  alt="Baby BOSS superhero mascot"
+                  alt="BOSS BABY superhero mascot"
                   width={1120}
                   height={1120}
                   className="h-auto w-full drop-shadow-[0_20px_60px_rgba(0,0,0,0.6)]"
@@ -668,7 +668,7 @@ function MemeGallerySection() {
                 aria-label="Meme images carousel"
               >
                 {items.map((src, i) => (
-                  <GalleryCard key={i} src={src} alt={`Baby BOSS meme ${((i % images.length) + 1)}`} />
+                  <GalleryCard key={i} src={src} alt={`BOSS BABY meme ${((i % images.length) + 1)}`} />
                 ))}
               </div>
             </div>
@@ -761,9 +761,9 @@ function FooterSection() {
                     letterSpacing: "0.01em",
                     textShadow: "0 0 28px rgba(245,197,66,0.18)",
                   }}
-                  aria-label="Baby BOSS"
+                  aria-label="BOSS BABY"
                 >
-                  BABY BOSS
+                  BOSS BABY
                 </div>
               </div>
 
@@ -798,7 +798,7 @@ function FooterSection() {
 
           {/* Optional small print */}
           <div className="py-6 text-center text-sm text-white/60">
-            <span>© {new Date().getFullYear()} Baby BOSS. All rights reserved.</span>
+            <span>© {new Date().getFullYear()} BOSS BABY. All rights reserved.</span>
           </div>
         </div>
       </div>
