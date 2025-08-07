@@ -4,6 +4,7 @@ import Link from "next/link"
 import { useEffect, useRef, useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Copy, Check, ChevronLeft, ChevronRight, LineChart, CircleDollarSign, X, Send, CandlestickChart } from 'lucide-react'
+import ClubLights from "@/components/club-lights"
 
 const NAV_LINKS = [
   { label: "ABOUT", href: "#about" },
@@ -17,7 +18,8 @@ const INNER = "mx-auto w-full max-w-[1400px]"
 
 export default function Page() {
   return (
-    <main className="text-white">
+    <main className="relative z-10 text-white">
+      <ClubLights />
       <TopNav />
       <Hero />
       <AboutSection />
