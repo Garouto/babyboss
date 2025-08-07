@@ -7,9 +7,7 @@ import { Copy, Check, ChevronLeft, ChevronRight, LineChart, CircleDollarSign, X,
 
 const NAV_LINKS = [
   { label: "ABOUT", href: "#about" },
-  { label: "HOW TO BUY", href: "#how-to-buy" },
   { label: "TOKENOMICS", href: "#tokenomics" },
-  { label: "FAQ", href: "#faq" },
   { label: "MEME GALLERY", href: "#meme-gallery" },
 ]
 
@@ -76,7 +74,7 @@ function TopNav() {
             </nav>
 
             <div className="flex items-center">
-              <Link href="#how-to-buy">
+              <Link href="#tokenomics">
                 <Button className="h-10 rounded-full bg-[#ef4444] px-5 text-white shadow-[0_0_0_2px_#f5c542_inset] hover:bg-[#f05252]">
                   BUY NOW
                 </Button>
@@ -179,7 +177,7 @@ function MobileMenu({ onClose }: { onClose: () => void }) {
           ))}
           <li className="pt-2">
             <a
-              href="#how-to-buy"
+              href="#tokenomics"
               onClick={onClose}
               className="inline-flex items-center justify-center rounded-full border-2 border-[#f5c542] px-7 py-2 text-lg font-extrabold text-white hover:bg-[#ef4444]"
             >
@@ -209,7 +207,7 @@ function Hero() {
           >
             {/* Desktop floating CTAs */}
             <a
-              href="#how-to-buy"
+              href="#tokenomics"
               className="
                 group absolute left-[clamp(8px,2vw,32px)]
                 top-[clamp(60px,12vw,220px)]
@@ -280,7 +278,7 @@ function Hero() {
             {/* Mobile CTAs under title */}
             <div className="mt-[clamp(16px,3.5vw,28px)] flex w-full flex-col items-center gap-4 md:hidden">
               <a
-                href="#how-to-buy"
+                href="#tokenomics"
                 className="inline-flex items-center gap-2 rounded-full border-2 border-[#f5c542] px-6 py-2 text-base font-extrabold leading-none text-white hover:bg-[#ef4444]"
               >
                 BUY NOW
@@ -376,7 +374,7 @@ function AboutSection() {
 
               <div className="mt-8">
                 <a
-                  href="#how-to-buy"
+                  href="#tokenomics"
                   className="inline-flex items-center gap-2 rounded-full border-2 border-[#f5c542] bg-white/0 px-7 py-3 text-lg font-extrabold text-white shadow-[0_0_24px_rgba(245,197,66,0.18)] transition hover:bg-[#ef4444]"
                 >
                   BUY NOW

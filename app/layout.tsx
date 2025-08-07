@@ -8,7 +8,7 @@ export const metadata: Metadata = {
     icon: "/favicon.png",
     shortcut: "/favicon.png",
   },
-    generator: 't.me/plebeu'
+  generator: "t.me/plebeu",
 }
 
 export default function RootLayout({
