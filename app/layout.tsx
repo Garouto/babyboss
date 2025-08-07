@@ -3,7 +3,7 @@ import "./globals.css"
 
 export const metadata: Metadata = {
   title: "Baby BOSS",
-  description: "Official Baby BOSS.",
+  description: "Official Baby BOSS",
   icons: {
     icon: "/favicon.png",
     shortcut: "/favicon.png",

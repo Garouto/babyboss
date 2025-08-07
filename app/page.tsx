@@ -52,7 +52,7 @@ function TopNav() {
           <div className="mx-auto hidden h-14 items-center justify-between rounded-full border border-white/20 bg-black/80 px-3 shadow-[0_0_0_1px_rgba(255,255,255,0.06)] backdrop-blur md:flex md:h-16 md:px-4">
             <Link href="/" className="flex items-center gap-3 pl-1">
               <img
-                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/logo-YbI3nJ4Ea98t00ayXMpjKAKLaIiCkS.png"
+                src="/images/logo.png"
                 alt="Baby BOSS logo"
                 width={36}
                 height={36}
@@ -108,7 +108,7 @@ function MobileTopBar({
         <div className="mx-auto flex h-12 items-center justify-between rounded-full border border-white/20 bg-black/80 px-2 shadow-[0_0_0_1px_rgba(255,255,255,0.06)] backdrop-blur">
           <Link href="/" className="flex items-center gap-2 pl-1">
             <img
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/logo-YbI3nJ4Ea98t00ayXMpjKAKLaIiCkS.png"
+              src="/images/logo.png"
               alt="Baby BOSS logo"
               width={28}
               height={28}
@@ -148,7 +148,7 @@ function MobileMenu({ onClose }: { onClose: () => void }) {
         <div className="flex items-center justify-between px-4 pt-4">
           <Link href="/" className="flex items-center gap-2" onClick={onClose}>
             <img
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/logo-YbI3nJ4Ea98t00ayXMpjKAKLaIiCkS.png"
+              src="/images/logo.png"
               alt="Baby BOSS logo"
               width={28}
               height={28}
@@ -255,18 +255,27 @@ function Hero() {
               </a>
             </div>
 
-            <h1
-              className="text-center font-extrabold leading-none"
-              style={{
-                fontSize: "clamp(52px, 13.5vw, 220px)",
-                color: "#0b0b0b",
-                WebkitTextStroke: "0.065em #f5c542",
-                letterSpacing: "0.015em",
-                textShadow: "0 0 1.2em rgba(245,197,66,0.28), 0 0 2.6em rgba(239,68,68,0.22)",
-              }}
-            >
-              BABY BOSS
-            </h1>
+            <div className="flex flex-col items-center gap-4 md:gap-6">
+              <img
+                src="/images/logo.png"
+                alt="Baby BOSS logo"
+                width={512}
+                height={512}
+                className="h-[clamp(100px,18vw,200px)] w-auto drop-shadow-[0_14px_40px_rgba(0,0,0,0.55)]"
+              />
+              <h1
+                className="text-center font-extrabold leading-none"
+                style={{
+                  fontSize: "clamp(52px, 13.5vw, 220px)",
+                  color: "#0b0b0b",
+                  WebkitTextStroke: "0.065em #f5c542",
+                  letterSpacing: "0.015em",
+                  textShadow: "0 0 1.2em rgba(245,197,66,0.28), 0 0 2.6em rgba(239,68,68,0.22)",
+                }}
+              >
+                BABY BOSS
+              </h1>
+            </div>
 
             {/* Mobile CTAs under title */}
             <div className="mt-[clamp(16px,3.5vw,28px)] flex w-full flex-col items-center gap-4 md:hidden">
@@ -519,16 +528,19 @@ function MemeGallerySection() {
     "/images/gallery/8.jpg",
     "/images/gallery/9.jpg",
   ]
+  // Duplicate list for seamless looping
   const items = [...images, ...images]
 
   const scrollerRef = useRef<HTMLDivElement | null>(null)
   const trackRef = useRef<HTMLDivElement | null>(null)
   const [paused, setPaused] = useState(false)
 
+  // Auto-scroll right -> left (content moves left)
   useEffect(() => {
     let raf = 0
     let last = performance.now()
-    const speedPxPerSec = 22
+    const speedPxPerSec = 55
+
     const el = scrollerRef.current
     if (!el) return
 
@@ -541,8 +553,9 @@ function MemeGallerySection() {
       const dt = (t - last) / 1000
       last = t
       el.scrollLeft += speedPxPerSec * dt
-      const half = el.scrollWidth / 2
-      if (el.scrollLeft >= half) {
+
+      const half = (trackRef.current?.scrollWidth || 0) / 2
+      if (half > 0 && el.scrollLeft >= half) {
         el.scrollLeft -= half
       }
       raf = requestAnimationFrame(step)
@@ -551,6 +564,7 @@ function MemeGallerySection() {
     return () => cancelAnimationFrame(raf)
   }, [paused])
 
+  // Arrow buttons
   const scrollByCard = (dir: 1 | -1) => {
     const el = scrollerRef.current
     const track = trackRef.current
@@ -563,6 +577,7 @@ function MemeGallerySection() {
     el.scrollTo({ left: target, behavior: "smooth" })
   }
 
+  // Drag/swipe to scroll
   useEffect(() => {
     const el = scrollerRef.current
     if (!el) return
@@ -633,9 +648,16 @@ function MemeGallerySection() {
               </div>
             </div>
 
+            {/* Scrollable container; scrollbar visually hidden */}
             <div
               ref={scrollerRef}
-              className="relative mt-[clamp(18px,3vw,28px)] overflow-hidden"
+              className="
+                relative mt-[clamp(18px,3vw,28px)]
+                overflow-x-auto overflow-y-hidden
+                [-ms-overflow-style:none] [scrollbar-width:none]
+                [&::-webkit-scrollbar]:hidden
+                cursor-grab active:cursor-grabbing
+              "
               onMouseEnter={() => setPaused(true)}
               onMouseLeave={() => setPaused(false)}
               onTouchStart={() => setPaused(true)}
